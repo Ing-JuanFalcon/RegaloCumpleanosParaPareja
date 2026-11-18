@@ -8,12 +8,11 @@ export type StoryPhoto = {
 }
 
 export const birthdayContent = {
-  intro: 'Hoy es un día muy especial...',
-  title: '¡Feliz cumpleaños, mi amor!',
-  subtitle: 'Preparé algo especial para ti...',
-  start: 'Comenzar nuestra historia',
+  title: '¡Feliz cumpleaños mi Dians!',
+  start: 'Comenzar',
   date: '18 de noviembre de 2001',
-  musicLabel: 'una canción para ti',
+  musicLabel: 'The Only Exception',
+  signature: 'Hecho por Juan Falcón, tu Sr. Pera, para ti',
   photos: [
     {
       image: new URL('./fotobebe.jpg', import.meta.url).href,
@@ -62,3 +61,9 @@ export const birthdayContent = {
 }
 
 export const soundtrackUrl = new URL('./Paramore - The Only Exception (Official Instrumental).mp3', import.meta.url).href
+export const characterAssets = {
+  peach: new URL('./peachizquierda.png', import.meta.url).href,
+  goma: new URL('./goma derecha.png', import.meta.url).href,
+  together: new URL('./peachgomasjuntos.png', import.meta.url).href,
+  firstTransition: new URL('./primer transicion.gif', import.meta.url).href,
+}
