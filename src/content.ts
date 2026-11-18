@@ -17,7 +17,7 @@ export const birthdayContent = {
   signature: 'Hecho por Juan Falcón, tu Sr. Pera, para ti',
   photos: [
     {
-      image: new URL('./fotobebe.jpg', import.meta.url).href,
+      image: new URL('./optimized/fotobebe.webp', import.meta.url).href,
       alt: 'Una foto de cuando eras bebé',
       chapter: 'CAPÍTULO UNO · EL COMIENZO',
       title: 'El mundo se hizo más bonito',
@@ -25,7 +25,7 @@ export const birthdayContent = {
       caption: 'el comienzo de todo',
     },
     {
-      image: new URL('./fotocrecer.jpg', import.meta.url).href,
+      image: new URL('./optimized/fotocrecer.webp', import.meta.url).href,
       alt: 'Una foto de tu infancia mientras crecías',
       chapter: 'CAPÍTULO DOS · CADA PASITO',
       title: 'Y fuiste creciendo...',
@@ -33,7 +33,7 @@ export const birthdayContent = {
       caption: 'tantas historias por delante',
     },
     {
-      image: new URL('./fotofamiliar.jpg', import.meta.url).href,
+      image: new URL('./optimized/fotofamiliar.webp', import.meta.url).href,
       alt: 'Una foto junto a tu familia',
       chapter: 'CAPÍTULO TRES · TUS RAÍCES',
       title: 'El amor que te acompaña',
@@ -62,23 +62,30 @@ export const birthdayContent = {
   },
 }
 
-export const soundtrackUrl = new URL('./Paramore - The Only Exception (Official Instrumental).mp3', import.meta.url).href
+export const soundtrackUrl = new URL('./optimized/song.mp3', import.meta.url).href
 export const characterAssets = {
   peach: new URL('./peachizquierda.png', import.meta.url).href,
   goma: new URL('./goma derecha.png', import.meta.url).href,
   together: new URL('./peachgomasjuntos.png', import.meta.url).href,
   transition: new URL('./segundatransision.gif', import.meta.url).href,
   afterBaby: new URL('./transisiontres.gif', import.meta.url).href,
-  afterGrowing: new URL('./primer transicion.gif', import.meta.url).href,
-  afterFamily: new URL('./gi3.gif', import.meta.url).href,
-  afterTogether: new URL('./gi4.webp', import.meta.url).href,
-  afterFinalPhoto: new URL('./gi5.gif', import.meta.url).href,
-  extraPhoto: new URL('./fotocasifinal.jpg', import.meta.url).href,
+  afterGrowing: new URL('./optimized/primer-transicion.webm', import.meta.url).href,
+  afterFamily: new URL('./optimized/gi3.webm', import.meta.url).href,
+  afterTogether: new URL('./optimized/gi4.webm', import.meta.url).href,
+  afterFinalPhoto: new URL('./optimized/gi5.webm', import.meta.url).href,
+  extraPhoto: new URL('./optimized/fotocasifinal.webp', import.meta.url).href,
+  posters: {
+    afterBaby: new URL('./optimized/posters/despues-bebe.jpg', import.meta.url).href,
+    afterGrowing: new URL('./optimized/posters/primer-transicion.jpg', import.meta.url).href,
+    afterFamily: new URL('./optimized/posters/gi3.jpg', import.meta.url).href,
+    afterTogether: new URL('./optimized/posters/gi4.jpg', import.meta.url).href,
+    afterFinalPhoto: new URL('./optimized/posters/gi5.jpg', import.meta.url).href,
+  },
 }
-export const songCoverUrl = new URL('./cover.jpg', import.meta.url).href
+export const songCoverUrl = new URL('./optimized/cover.webp', import.meta.url).href
 
 export const yearCollagePhotos = Array.from({ length: 6 }, (_, index) => ({
-  src: new URL(`./${index + 1}.jpg`, import.meta.url).href,
+  src: index === 0 ? new URL('./1.jpg', import.meta.url).href : new URL(`./optimized/${index + 1}.webp`, import.meta.url).href,
   label: `Recuerdo 0${index + 1}`,
 }))
 

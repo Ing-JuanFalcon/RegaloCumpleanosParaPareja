@@ -13,6 +13,23 @@ import { CollageScene } from './scenes/CollageScene'
 import { FinalScene } from './scenes/FinalScene'
 
 const MUSIC_SCENES = new Set([3, 5, 7, 9, 11, 14, 15, 16])
+const transitionPreloads = new Map<string, HTMLImageElement | HTMLVideoElement>()
+const preloadTransition = (source: string) => {
+  if (transitionPreloads.has(source)) return
+  if (source.endsWith('.webm')) {
+    const video = document.createElement('video')
+    video.preload = 'auto'
+    video.muted = true
+    video.src = source
+    transitionPreloads.set(source, video)
+  } else {
+    const image = new Image()
+    image.decoding = 'async'
+    image.fetchPriority = 'low'
+    image.src = source
+    transitionPreloads.set(source, image)
+  }
+}
 const extraMemory = {
   image: characterAssets.extraPhoto,
   alt: 'Una foto de los dos juntos, antes del último recuerdo',
@@ -130,18 +147,18 @@ export default function App() {
   }
   const showMusicControl = MUSIC_SCENES.has(scene)
 
-  const onBabyTransitionDone = useCallback(() => setScene(5), [])
-  const onGrowingTransitionDone = useCallback(() => setScene(7), [])
-  const onFamilyTransitionDone = useCallback(() => setScene(9), [])
-  const onCoupleTransitionDone = useCallback(() => setScene(11), [])
+  const onBabyTransitionDone = useCallback(() => { preloadTransition(characterAssets.afterGrowing); setScene(5) }, [])
+  const onGrowingTransitionDone = useCallback(() => { preloadTransition(characterAssets.afterFamily); setScene(7) }, [])
+  const onFamilyTransitionDone = useCallback(() => { preloadTransition(characterAssets.afterTogether); setScene(9) }, [])
+  const onCoupleTransitionDone = useCallback(() => { preloadTransition(characterAssets.afterFinalPhoto); setScene(11) }, [])
   const onLastTransitionDone = useCallback(() => setScene(13), [])
-  const onBabyLoadingDone = useCallback(() => setScene(3), [])
+  const onBabyLoadingDone = useCallback(() => { preloadTransition(characterAssets.afterBaby); setScene(3) }, [])
   const onLetterLoadingDone = useCallback(() => setScene(14), [])
 
   return (
     <div className="app-shell">
       <div className="paper-grain" aria-hidden="true" />
-      <audio ref={audioRef} src={soundtrackUrl} loop preload="auto" onPause={() => setMusicPlaying(false)} onPlay={() => setMusicPlaying(true)} />
+      <audio ref={audioRef} src={soundtrackUrl} loop preload="none" onPause={() => setMusicPlaying(false)} onPlay={() => setMusicPlaying(true)} />
       {showMusicControl && <MusicControl playing={musicPlaying} label={birthdayContent.musicLabel} onToggle={toggleMusic} />}
       <AnimatePresence mode="wait">
         {scene === 0 ? (
@@ -151,15 +168,15 @@ export default function App() {
         ) : scene === 2 || scene === 13 ? (
           <LoadingScene key={`loading-${scene}`} onDone={scene === 2 ? onBabyLoadingDone : onLetterLoadingDone} />
         ) : scene === 4 ? (
-          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} duration={5200} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
+          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} poster={characterAssets.posters.afterBaby} duration={7200} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
         ) : scene === 6 ? (
-          <TransitionScene key="transition-growing" image={characterAssets.afterGrowing} duration={18870} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
+          <TransitionScene key="transition-growing" video={characterAssets.afterGrowing} poster={characterAssets.posters.afterGrowing} duration={18870} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
         ) : scene === 8 ? (
-          <TransitionScene key="transition-family" image={characterAssets.afterFamily} duration={8800} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
+          <TransitionScene key="transition-family" video={characterAssets.afterFamily} poster={characterAssets.posters.afterFamily} duration={8800} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
         ) : scene === 10 ? (
-          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} duration={9120} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
+          <TransitionScene key="transition-couple" video={characterAssets.afterTogether} poster={characterAssets.posters.afterTogether} loop duration={9120} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
         ) : scene === 12 ? (
-          <TransitionScene key="transition-last" image={characterAssets.afterFinalPhoto} duration={6660} chapter="Un último destello" onDone={onLastTransitionDone} onBack={() => turnTo(11)} />
+          <TransitionScene key="transition-last" video={characterAssets.afterFinalPhoto} poster={characterAssets.posters.afterFinalPhoto} duration={6660} chapter="Un último destello" onDone={onLastTransitionDone} onBack={() => turnTo(11)} />
         ) : [3, 5, 7, 9, 11].includes(scene) ? (
           <MemoryScene
             key={`photo-${scene}`}
