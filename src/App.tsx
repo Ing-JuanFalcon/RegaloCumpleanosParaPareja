@@ -12,7 +12,7 @@ import { LetterScene } from './scenes/LetterScene'
 import { CollageScene } from './scenes/CollageScene'
 import { FinalScene } from './scenes/FinalScene'
 
-const MUSIC_SCENES = new Set([3, 5, 7, 8, 10, 11, 12])
+const MUSIC_SCENES = new Set([3, 5, 7, 9, 12, 13, 14])
 
 export default function App() {
   const [scene, setScene] = useState(0)
@@ -113,19 +113,21 @@ export default function App() {
     setScene(0)
   }
   const nextFromPhoto = () => {
-    const nextScene: Record<number, number> = { 3: 4, 5: 6, 7: 8, 8: 9 }
+    const nextScene: Record<number, number> = { 3: 4, 5: 6, 7: 8, 9: 10 }
     turnTo(nextScene[scene] ?? scene)
   }
   const backFromPhoto = () => {
-    const previousScene: Record<number, number> = { 3: 1, 5: 3, 7: 5, 8: 7 }
+    const previousScene: Record<number, number> = { 3: 1, 5: 3, 7: 5, 9: 7 }
     turnTo(previousScene[scene] ?? 0)
   }
   const showMusicControl = MUSIC_SCENES.has(scene)
 
   const onBabyTransitionDone = useCallback(() => setScene(5), [])
   const onGrowingTransitionDone = useCallback(() => setScene(7), [])
+  const onFamilyTransitionDone = useCallback(() => setScene(9), [])
+  const onCoupleTransitionDone = useCallback(() => setScene(11), [])
   const onBabyLoadingDone = useCallback(() => setScene(3), [])
-  const onLetterLoadingDone = useCallback(() => setScene(10), [])
+  const onLetterLoadingDone = useCallback(() => setScene(12), [])
 
   return (
     <div className="app-shell">
@@ -137,13 +139,17 @@ export default function App() {
           <WelcomeScene key="welcome" onBegin={beginStory} />
         ) : scene === 1 ? (
           <PreludeScene key="prelude" stage={preludeStage} onStageChange={onPreludeStageChange} onSongFound={onSongFound} onNext={startPhotoStory} onBack={() => turnTo(0)} />
-        ) : scene === 2 || scene === 9 ? (
+        ) : scene === 2 || scene === 11 ? (
           <LoadingScene key={`loading-${scene}`} onDone={scene === 2 ? onBabyLoadingDone : onLetterLoadingDone} />
         ) : scene === 4 ? (
           <TransitionScene key="transition-baby" image={characterAssets.afterBaby} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
         ) : scene === 6 ? (
           <TransitionScene key="transition-growing" image={characterAssets.afterGrowing} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
-        ) : scene >= 3 && scene <= 8 ? (
+        ) : scene === 8 ? (
+          <TransitionScene key="transition-family" image={characterAssets.afterFamily} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
+        ) : scene === 10 ? (
+          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
+        ) : [3, 5, 7, 9].includes(scene) ? (
           <MemoryScene
             key={`photo-${scene}`}
             memory={birthdayContent.photos[scene === 3 ? 0 : scene === 5 ? 1 : scene === 7 ? 2 : 3]}
@@ -152,12 +158,12 @@ export default function App() {
             onBack={backFromPhoto}
             onNext={nextFromPhoto}
           />
-        ) : scene === 10 ? (
-          <LetterScene key="letter" onBack={() => turnTo(8)} onNext={() => turnTo(11)} />
-        ) : scene === 11 ? (
-          <CollageScene key="collage" onBack={() => turnTo(10)} onFinish={() => turnTo(12)} />
+        ) : scene === 12 ? (
+          <LetterScene key="letter" onBack={() => turnTo(10)} onNext={() => turnTo(13)} />
+        ) : scene === 13 ? (
+          <CollageScene key="collage" onBack={() => turnTo(12)} onFinish={() => turnTo(14)} />
         ) : (
-          <FinalScene key="final" onBack={() => turnTo(11)} onRestart={resetStory} />
+          <FinalScene key="final" onBack={() => turnTo(13)} onRestart={resetStory} />
         )}
       </AnimatePresence>
       <AnimatePresence>{pageTurning && <PageTurnOverlay key={`page-turn-${turnId}`} />}</AnimatePresence>

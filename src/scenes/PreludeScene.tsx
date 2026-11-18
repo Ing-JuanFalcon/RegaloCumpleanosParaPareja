@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+﻿import { useEffect } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { CSSProperties } from 'react'
 import { ArrowLeft, ArrowRight, Heart, Music2 } from 'lucide-react'
@@ -51,13 +51,13 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
           ) : stage === 2 ? (
             <div className="search-card">
               <span className="search-icon"><Music2 size={22} /></span>
-              <h2>Buscando una canción perfecta como tú...</h2>
+              <h2>Buscando una buena canción...</h2>
               <div className="fake-progress" role="progressbar" aria-label="Buscando una canción" aria-valuemin={0} aria-valuemax={100}><span /></div>
               <span className="search-caption">escuchando con el corazón</span>
             </div>
           ) : (
             <div className="song-reveal">
-              <h2>Creo que esta canción es perfecta.</h2>
+              <h2>Bueno, podemos comenzar con esta, creo es perfecta</h2>
               <div className="song-card">
                 <div className="cover-wrap"><img src={songCoverUrl} alt="Portada del álbum Brand New Eyes de Paramore" /></div>
                 <div className="song-details">
@@ -74,3 +74,4 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
     </SceneFrame>
   )
 }
+

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from 'framer-motion'
+﻿import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, Sparkles } from 'lucide-react'
 import { birthdayContent } from '../content'
 import { Decor } from '../components/Decor'
@@ -41,7 +41,7 @@ export function WelcomeScene({ onBegin }: { onBegin: () => void }) {
           <PencilButton onClick={onBegin} icon={<ArrowDown size={17} strokeWidth={1.7} />}>{birthdayContent.start}</PencilButton>
         </Reveal>
       </div>
-      <div className="welcome-foot"><span>{birthdayContent.signature}</span><span className="footer-heart" aria-label="con amor">♥</span></div>
     </SceneFrame>
   )
 }
+
