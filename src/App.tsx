@@ -74,13 +74,14 @@ export default function App() {
     window.setTimeout(() => setPageTurning(false), 1000)
   }
 
-  const beginStory = () => {
+  const beginStory = () => setScene(1)
+  const startPhotoStory = () => {
     playMusic()
-    setScene(1)
+    turnTo(2)
   }
   const goNext = () => turnTo(Math.min(scene + 1, lastScene))
   const goBack = () => turnTo(Math.max(scene - 1, 1))
-  const showMusicControl = scene > 1 || (scene === 1 && preludeStage >= 2)
+  const showMusicControl = scene > 1
 
   return (
     <div className="app-shell">
@@ -91,7 +92,7 @@ export default function App() {
         {scene === 0 ? (
           <WelcomeScene key="welcome" onBegin={beginStory} />
         ) : scene === 1 ? (
-          <PreludeScene key="prelude" stage={preludeStage} onStageChange={onPreludeStageChange} onNext={() => turnTo(2)} />
+          <PreludeScene key="prelude" stage={preludeStage} onStageChange={onPreludeStageChange} onNext={startPhotoStory} />
         ) : scene <= lastPhotoScene ? (
           <MemoryScene
             key={`photo-${scene}`}

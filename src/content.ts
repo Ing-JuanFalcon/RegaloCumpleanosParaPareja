@@ -11,7 +11,9 @@ export const birthdayContent = {
   title: '¡Feliz cumpleaños mi Dians!',
   start: 'Comenzar',
   date: '18 de noviembre de 2001',
-  musicLabel: 'The Only Exception',
+  musicLabel: 'My Only Exception',
+  songTitle: 'My Only Exception',
+  songArtist: 'Paramore',
   signature: 'Hecho por Juan Falcón, tu Sr. Pera, para ti',
   photos: [
     {
@@ -66,4 +68,6 @@ export const characterAssets = {
   goma: new URL('./goma derecha.png', import.meta.url).href,
   together: new URL('./peachgomasjuntos.png', import.meta.url).href,
   firstTransition: new URL('./primer transicion.gif', import.meta.url).href,
+  secondTransition: new URL('./segundatransision.gif', import.meta.url).href,
 }
+export const songCoverUrl = new URL('./cover.jpg', import.meta.url).href
