@@ -1,4 +1,4 @@
-export type StoryPhoto = {
+﻿export type StoryPhoto = {
   image: string
   alt: string
   chapter: string
@@ -73,10 +73,13 @@ export const characterAssets = {
   afterFamily: new URL('./gi3.gif', import.meta.url).href,
   afterTogether: new URL('./gi4.webp', import.meta.url).href,
   afterFinalPhoto: new URL('./gi5.gif', import.meta.url).href,
+  extraPhoto: new URL('./fotocasifinal.jpg', import.meta.url).href,
 }
 export const songCoverUrl = new URL('./cover.jpg', import.meta.url).href
 
 export const yearCollagePhotos = Array.from({ length: 6 }, (_, index) => ({
-  src: `/images/collage/foto-${String(index + 1).padStart(2, '0')}.jpg`,
-  label: `Recuerdo ${String(index + 1).padStart(2, '0')}`,
+  src: new URL(`./${index + 1}.jpg`, import.meta.url).href,
+  label: `Recuerdo 0${index + 1}`,
 }))
+
+

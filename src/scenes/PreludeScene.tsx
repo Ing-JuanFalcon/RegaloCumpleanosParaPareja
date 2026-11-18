@@ -15,8 +15,8 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
     onStageChange(0)
     const timers = [
       window.setTimeout(() => onStageChange(1), 1100),
-      window.setTimeout(() => onStageChange(2), 6100),
-      window.setTimeout(() => { onSongFound(); onStageChange(3) }, 9600),
+      window.setTimeout(() => onStageChange(2), 7400),
+      window.setTimeout(() => { onSongFound(); onStageChange(3) }, 10900),
     ]
     return () => timers.forEach(timer => window.clearTimeout(timer))
   }, [onStageChange, onSongFound])
@@ -73,5 +73,6 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
     </SceneFrame>
   )
 }
+
 
 

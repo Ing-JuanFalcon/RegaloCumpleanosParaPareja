@@ -14,8 +14,8 @@ import { FinalScene } from './scenes/FinalScene'
 
 const MUSIC_SCENES = new Set([3, 5, 7, 9, 11, 14, 15, 16])
 const extraMemory = {
-  image: characterAssets.together,
-  alt: 'Peach y Goma juntos, como un recuerdo de nosotros',
+  image: characterAssets.extraPhoto,
+  alt: 'Una foto de los dos juntos, antes del último recuerdo',
   chapter: 'CAPÍTULO CINCO · LO QUE SIGUE',
   title: 'Y todavía quedan momentos por vivir',
   message: 'Esta historia también guarda un espacio para todo lo que nos espera: más risas, abrazos y recuerdos que iremos creando juntos, poquito a poquito.',
@@ -151,15 +151,15 @@ export default function App() {
         ) : scene === 2 || scene === 13 ? (
           <LoadingScene key={`loading-${scene}`} onDone={scene === 2 ? onBabyLoadingDone : onLetterLoadingDone} />
         ) : scene === 4 ? (
-          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} duration={5000} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
+          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} duration={5200} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
         ) : scene === 6 ? (
           <TransitionScene key="transition-growing" image={characterAssets.afterGrowing} duration={18870} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
         ) : scene === 8 ? (
-          <TransitionScene key="transition-family" image={characterAssets.afterFamily} duration={10800} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
+          <TransitionScene key="transition-family" image={characterAssets.afterFamily} duration={8800} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
         ) : scene === 10 ? (
-          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} duration={5000} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
+          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} duration={9120} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
         ) : scene === 12 ? (
-          <TransitionScene key="transition-last" image={characterAssets.afterFinalPhoto} duration={3000} chapter="Un último destello" onDone={onLastTransitionDone} onBack={() => turnTo(11)} />
+          <TransitionScene key="transition-last" image={characterAssets.afterFinalPhoto} duration={6660} chapter="Un último destello" onDone={onLastTransitionDone} onBack={() => turnTo(11)} />
         ) : [3, 5, 7, 9, 11].includes(scene) ? (
           <MemoryScene
             key={`photo-${scene}`}
@@ -181,5 +181,7 @@ export default function App() {
     </div>
   )
 }
+
+
 
 
