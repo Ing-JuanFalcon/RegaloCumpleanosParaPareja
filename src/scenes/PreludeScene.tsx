@@ -53,7 +53,6 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
               <span className="search-icon"><Music2 size={22} /></span>
               <h2>Buscando una buena canción...</h2>
               <div className="fake-progress" role="progressbar" aria-label="Buscando una canción" aria-valuemin={0} aria-valuemax={100}><span /></div>
-              <span className="search-caption">escuchando con el corazón</span>
             </div>
           ) : (
             <div className="song-reveal">
@@ -74,4 +73,5 @@ export function PreludeScene({ stage, onStageChange, onSongFound, onNext, onBack
     </SceneFrame>
   )
 }
+
 

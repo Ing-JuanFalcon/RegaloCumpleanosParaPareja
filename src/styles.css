@@ -685,3 +685,6 @@ h1, h2 { font-family: 'Caveat', 'Playfair Display', cursive; font-weight: 600; l
 
 .welcome-scene .welcome-foot { position: relative; bottom: auto; z-index: 3; justify-content: center; margin: -2px 0 4px; }
 
+
+.fullscreen-transition .transition-fade { position: absolute; z-index: 2; inset: 0; pointer-events: none; background: #ead1a9; }
+

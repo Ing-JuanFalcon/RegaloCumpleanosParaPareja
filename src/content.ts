@@ -72,6 +72,7 @@ export const characterAssets = {
   afterGrowing: new URL('./primer transicion.gif', import.meta.url).href,
   afterFamily: new URL('./gi3.gif', import.meta.url).href,
   afterTogether: new URL('./gi4.webp', import.meta.url).href,
+  afterFinalPhoto: new URL('./gi5.gif', import.meta.url).href,
 }
 export const songCoverUrl = new URL('./cover.jpg', import.meta.url).href
 

@@ -1,4 +1,4 @@
-import { AnimatePresence, useReducedMotion } from 'framer-motion'
+﻿import { AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useCallback, useRef, useState } from 'react'
 import { birthdayContent, characterAssets, soundtrackUrl } from './content'
 import { MusicControl } from './components/MusicControl'
@@ -12,7 +12,15 @@ import { LetterScene } from './scenes/LetterScene'
 import { CollageScene } from './scenes/CollageScene'
 import { FinalScene } from './scenes/FinalScene'
 
-const MUSIC_SCENES = new Set([3, 5, 7, 9, 12, 13, 14])
+const MUSIC_SCENES = new Set([3, 5, 7, 9, 11, 14, 15, 16])
+const extraMemory = {
+  image: characterAssets.together,
+  alt: 'Peach y Goma juntos, como un recuerdo de nosotros',
+  chapter: 'CAPÍTULO CINCO · LO QUE SIGUE',
+  title: 'Y todavía quedan momentos por vivir',
+  message: 'Esta historia también guarda un espacio para todo lo que nos espera: más risas, abrazos y recuerdos que iremos creando juntos, poquito a poquito.',
+  caption: 'nuestra historia continúa',
+}
 
 export default function App() {
   const [scene, setScene] = useState(0)
@@ -113,11 +121,11 @@ export default function App() {
     setScene(0)
   }
   const nextFromPhoto = () => {
-    const nextScene: Record<number, number> = { 3: 4, 5: 6, 7: 8, 9: 10 }
+    const nextScene: Record<number, number> = { 3: 4, 5: 6, 7: 8, 9: 10, 11: 12 }
     turnTo(nextScene[scene] ?? scene)
   }
   const backFromPhoto = () => {
-    const previousScene: Record<number, number> = { 3: 1, 5: 3, 7: 5, 9: 7 }
+    const previousScene: Record<number, number> = { 3: 1, 5: 3, 7: 5, 9: 7, 11: 10 }
     turnTo(previousScene[scene] ?? 0)
   }
   const showMusicControl = MUSIC_SCENES.has(scene)
@@ -126,8 +134,9 @@ export default function App() {
   const onGrowingTransitionDone = useCallback(() => setScene(7), [])
   const onFamilyTransitionDone = useCallback(() => setScene(9), [])
   const onCoupleTransitionDone = useCallback(() => setScene(11), [])
+  const onLastTransitionDone = useCallback(() => setScene(13), [])
   const onBabyLoadingDone = useCallback(() => setScene(3), [])
-  const onLetterLoadingDone = useCallback(() => setScene(12), [])
+  const onLetterLoadingDone = useCallback(() => setScene(14), [])
 
   return (
     <div className="app-shell">
@@ -139,34 +148,38 @@ export default function App() {
           <WelcomeScene key="welcome" onBegin={beginStory} />
         ) : scene === 1 ? (
           <PreludeScene key="prelude" stage={preludeStage} onStageChange={onPreludeStageChange} onSongFound={onSongFound} onNext={startPhotoStory} onBack={() => turnTo(0)} />
-        ) : scene === 2 || scene === 11 ? (
+        ) : scene === 2 || scene === 13 ? (
           <LoadingScene key={`loading-${scene}`} onDone={scene === 2 ? onBabyLoadingDone : onLetterLoadingDone} />
         ) : scene === 4 ? (
-          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
+          <TransitionScene key="transition-baby" image={characterAssets.afterBaby} duration={5000} chapter="Un momento de ternura" onDone={onBabyTransitionDone} onBack={() => turnTo(3)} />
         ) : scene === 6 ? (
-          <TransitionScene key="transition-growing" image={characterAssets.afterGrowing} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
+          <TransitionScene key="transition-growing" image={characterAssets.afterGrowing} duration={18870} chapter="Un abrazo lleno de cariño" onDone={onGrowingTransitionDone} onBack={() => turnTo(5)} />
         ) : scene === 8 ? (
-          <TransitionScene key="transition-family" image={characterAssets.afterFamily} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
+          <TransitionScene key="transition-family" image={characterAssets.afterFamily} duration={10800} chapter="Un recuerdo lleno de amor" onDone={onFamilyTransitionDone} onBack={() => turnTo(7)} />
         ) : scene === 10 ? (
-          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
-        ) : [3, 5, 7, 9].includes(scene) ? (
+          <TransitionScene key="transition-couple" image={characterAssets.afterTogether} duration={5000} chapter="Un momento para los dos" onDone={onCoupleTransitionDone} onBack={() => turnTo(9)} />
+        ) : scene === 12 ? (
+          <TransitionScene key="transition-last" image={characterAssets.afterFinalPhoto} duration={3000} chapter="Un último destello" onDone={onLastTransitionDone} onBack={() => turnTo(11)} />
+        ) : [3, 5, 7, 9, 11].includes(scene) ? (
           <MemoryScene
             key={`photo-${scene}`}
-            memory={birthdayContent.photos[scene === 3 ? 0 : scene === 5 ? 1 : scene === 7 ? 2 : 3]}
-            index={scene === 3 ? 0 : scene === 5 ? 1 : scene === 7 ? 2 : 3}
-            total={birthdayContent.photos.length}
+            memory={scene === 11 ? extraMemory : birthdayContent.photos[scene === 3 ? 0 : scene === 5 ? 1 : scene === 7 ? 2 : 3]}
+            index={scene === 3 ? 0 : scene === 5 ? 1 : scene === 7 ? 2 : scene === 9 ? 3 : 4}
+            total={birthdayContent.photos.length + 1}
             onBack={backFromPhoto}
             onNext={nextFromPhoto}
           />
-        ) : scene === 12 ? (
-          <LetterScene key="letter" onBack={() => turnTo(10)} onNext={() => turnTo(13)} />
-        ) : scene === 13 ? (
-          <CollageScene key="collage" onBack={() => turnTo(12)} onFinish={() => turnTo(14)} />
+        ) : scene === 14 ? (
+          <LetterScene key="letter" onBack={() => turnTo(12)} onNext={() => turnTo(15)} />
+        ) : scene === 15 ? (
+          <CollageScene key="collage" onBack={() => turnTo(14)} onFinish={() => turnTo(16)} />
         ) : (
-          <FinalScene key="final" onBack={() => turnTo(13)} onRestart={resetStory} />
+          <FinalScene key="final" onBack={() => turnTo(15)} onRestart={resetStory} />
         )}
       </AnimatePresence>
       <AnimatePresence>{pageTurning && <PageTurnOverlay key={`page-turn-${turnId}`} />}</AnimatePresence>
     </div>
   )
 }
+
+
