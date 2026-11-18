@@ -1,12 +1,10 @@
-import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowLeft, Heart, RotateCcw, Sparkles } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Heart, Sparkles } from 'lucide-react'
 import { birthdayContent } from '../content'
 import { Decor } from '../components/Decor'
+import { PencilButton } from '../components/PencilButton'
 import { Reveal, SceneFrame } from '../components/SceneFrame'
 
-export function LetterScene({ onBack, onRestart }: { onBack: () => void; onRestart: () => void }) {
-  const reduceMotion = useReducedMotion()
-
+export function LetterScene({ onBack, onNext }: { onBack: () => void; onNext: () => void }) {
   return (
     <SceneFrame className="letter-scene">
       <Decor scene={3} />
@@ -22,9 +20,7 @@ export function LetterScene({ onBack, onRestart }: { onBack: () => void; onResta
           <span className="letter-paper-flower flower-b" aria-hidden="true">✦</span>
         </Reveal>
         <Reveal className="letter-actions" delay={.58}>
-          <motion.button className="secondary-button" onClick={onRestart} whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: .98 }}>
-            <RotateCcw size={14} /><span>Volver al comienzo</span>
-          </motion.button>
+          <PencilButton onClick={onNext} icon={<ArrowRight size={16} />}>Continuar</PencilButton>
         </Reveal>
         <Reveal className="letter-footer" delay={.72}>HECHO CON TODO MI AMOR <span>✦</span></Reveal>
       </div>

@@ -2,6 +2,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Heart, Sparkles } from 'lucide-react'
 import type { StoryPhoto } from '../content'
 import { Decor } from '../components/Decor'
+import { PencilButton } from '../components/PencilButton'
 import { Reveal, SceneFrame } from '../components/SceneFrame'
 
 type MemorySceneProps = {
@@ -63,9 +64,7 @@ export function MemoryScene({ memory, index, total, onBack, onNext }: MemoryScen
             <span className="progress-track">{Array.from({ length: total }, (_, i) => <i key={i} className={i <= index ? 'progress-filled' : ''} />)}</span>
             <span className="progress-number">0{total}</span>
           </div>
-          <motion.button className="secondary-button story-next" onClick={onNext} whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: .98 }}>
-            <span>{isLast ? 'Leer mi carta' : 'Siguiente recuerdo'}</span><ArrowRight size={16} strokeWidth={1.7} />
-          </motion.button>
+          <PencilButton className="story-next" onClick={onNext} icon={<ArrowRight size={17} strokeWidth={1.7} />}>{isLast ? 'Leer mi carta' : 'Siguiente recuerdo'}</PencilButton>
         </Reveal>
       </div>
     </SceneFrame>

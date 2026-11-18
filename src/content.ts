@@ -67,7 +67,13 @@ export const characterAssets = {
   peach: new URL('./peachizquierda.png', import.meta.url).href,
   goma: new URL('./goma derecha.png', import.meta.url).href,
   together: new URL('./peachgomasjuntos.png', import.meta.url).href,
-  firstTransition: new URL('./primer transicion.gif', import.meta.url).href,
-  secondTransition: new URL('./segundatransision.gif', import.meta.url).href,
+  transition: new URL('./segundatransision.gif', import.meta.url).href,
+  afterBaby: new URL('./transisiontres.gif', import.meta.url).href,
+  afterGrowing: new URL('./primer transicion.gif', import.meta.url).href,
 }
 export const songCoverUrl = new URL('./cover.jpg', import.meta.url).href
+
+export const yearCollagePhotos = Array.from({ length: 6 }, (_, index) => ({
+  src: `/images/collage/foto-${String(index + 1).padStart(2, '0')}.jpg`,
+  label: `Recuerdo ${String(index + 1).padStart(2, '0')}`,
+}))
