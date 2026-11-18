@@ -1,0 +1,1 @@
+export const birthdayContent = { intro: 'Hoy es un día muy especial...', title: '¡Feliz cumpleaños, mi amor!', subtitle: 'Preparé algo especial para ti...', start: 'Comenzar nuestra historia', memoryTitle: 'Todo comenzó un día como hoy...', date: '18 de noviembre de 2001', continue: 'Continuar', photoPath: '/images/foto-principal.jpg' }
