@@ -22,9 +22,9 @@ export function MemoryScene({ memory, index, total, onBack, onNext }: MemoryScen
       <Decor scene={2} />
       <button className="story-back" onClick={onBack} aria-label="Volver a la escena anterior"><ArrowLeft size={17} /></button>
       <div className="memory-content story-content">
-        <Reveal className="memory-kicker story-kicker" delay={0.08}>
+        {memory.chapter && <Reveal className="memory-kicker story-kicker" delay={0.08}>
           <Sparkles size={13} strokeWidth={1.4} /> {memory.chapter}
-        </Reveal>
+        </Reveal>}
         <Reveal className="memory-heading story-heading" delay={0.2}>
           <span className="heading-ornament" aria-hidden="true">✦</span>
           <h2>{memory.title}</h2>

@@ -1,4 +1,4 @@
-import { ArrowLeft, Sparkles } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { yearCollagePhotos } from '../content'
 import { Decor } from '../components/Decor'
 import { PencilButton } from '../components/PencilButton'
@@ -10,8 +10,7 @@ export function CollageScene({ onBack, onFinish }: { onBack: () => void; onFinis
       <Decor scene={3} />
       <button type="button" className="story-back" onClick={onBack} aria-label="Volver a la carta"><ArrowLeft size={17} /></button>
       <div className="collage-content">
-        <Reveal className="collage-eyebrow"><Sparkles size={13} /> UN AÑO EN SEIS MOMENTOS</Reveal>
-        <Reveal className="collage-title"><h2>Un año contigo</h2><p>Pequeños instantes que hicieron grande este año.</p></Reveal>
+        <Reveal className="collage-title"><h2>Recuento del año (Casi jaja)</h2></Reveal>
         <div className="year-collage">
           {yearCollagePhotos.map((photo, index) => (
             <Reveal key={photo.src} className={`collage-cell collage-cell-${index + 1}`} delay={.1 + index * .07}>

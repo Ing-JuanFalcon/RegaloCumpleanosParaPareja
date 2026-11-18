@@ -1,7 +1,7 @@
 ﻿export type StoryPhoto = {
   image: string
   alt: string
-  chapter: string
+  chapter?: string
   title: string
   message: string
   caption: string
@@ -19,46 +19,41 @@ export const birthdayContent = {
     {
       image: new URL('./optimized/fotobebe.webp', import.meta.url).href,
       alt: 'Una foto de cuando eras bebé',
-      chapter: 'CAPÍTULO UNO · EL COMIENZO',
-      title: 'El mundo se hizo más bonito',
-      message: 'Desde tus primeros días ya había algo especial en ti. Esta pequeña foto guarda el inicio de una vida que, con el tiempo, llenaría de luz a tantas personas.',
+      title: '¡Un día como hoy nació una persona especial, nada más y nada menos que Ceci!',
+      message: 'Una niña que no sabía todo lo que la vida le depararía, pero que cambiaría muchas vidas más, incluida la de un futuro chico que atesoraría este día como el más importante.',
       caption: 'el comienzo de todo',
     },
     {
       image: new URL('./optimized/fotocrecer.webp', import.meta.url).href,
       alt: 'Una foto de tu infancia mientras crecías',
-      chapter: 'CAPÍTULO DOS · CADA PASITO',
-      title: 'Y fuiste creciendo...',
-      message: 'Un día a la vez, fuiste convirtiéndote en la mujer increíble que eres. Ojalá nunca olvides que cada etapa, cada sueño y cada versión de ti merece ser celebrada.',
+      title: 'Seguiste creciendo',
+      message: 'Los gustos de esta bella chicuela se fueron extendiendo a muchos campos; casi sin querer, se volvió experta en todo. Pero, lo más importante: descubrió un talento oculto que casi nadie en este mundo posee: la creatividad, un talento que sorprendería a todos por lo hermoso que es.',
       caption: 'tantas historias por delante',
     },
     {
       image: new URL('./optimized/fotofamiliar.webp', import.meta.url).href,
       alt: 'Una foto junto a tu familia',
-      chapter: 'CAPÍTULO TRES · TUS RAÍCES',
-      title: 'El amor que te acompaña',
-      message: 'En los abrazos de tu familia viven muchas de las cosas bonitas que te hacen ser tú: tu fuerza, tu ternura y esa manera tan tuya de hacer sentir en casa.',
+      title: 'Una familia numerosa',
+      message: 'Es increíble cómo esta chica ha influido en la vida de cada persona que la rodea. Su sinceridad no se anda con rodeos y ayuda a todos a su manera. Con el tiempo, su familia y sus amigos aumentan, pero ella siempre destacará en mi corazón.',
       caption: 'el amor siempre encuentra su lugar',
     },
     {
       image: new URL('./fotofinal.jpg', import.meta.url).href,
       alt: 'Una foto de los dos juntos',
-      chapter: 'CAPÍTULO CUATRO · NUESTRO NOSOTROS',
-      title: 'Y qué suerte encontrarte',
-      message: 'De todas las vueltas que da la vida, mi favorita es la que me llevó hasta ti. Gracias por compartir tus días conmigo; quiero seguir coleccionando momentos a tu lado.',
+      title: 'Mi mejor regalo',
+      message: 'Encontré a la persona más importante de mi vida: mi Dians. Con ella, aprendí a amar y a disfrutar la vida. Mi mayor logro en esta vida lo conseguí hace mucho tiempo: lo logré el día que te conocí.',
       caption: 'mi lugar favorito es contigo',
     },
   ] satisfies StoryPhoto[],
   letter: {
     eyebrow: 'PARA TI, CON TODO MI AMOR',
-    title: 'Lo que quiero que nunca olvides',
+    title: '18-11-2026',
     paragraphs: [
-      'Hoy celebro tu vida, pero también celebro la suerte inmensa de poder caminar cerquita de ti. Admiro tu forma de ser, todo lo que has superado y todo lo bonito que todavía te espera.',
-      'Deseo que este nuevo año te regale motivos para reír, sueños que te emocionen y la confianza de saber que puedes llegar tan lejos como te propongas. Cuando lo necesites, aquí voy a estar: para aplaudirte, escucharte y recordarte cuánto vales.',
-      'Feliz cumpleaños, mi amor. Que la vida te devuelva multiplicada toda la luz que tú le das a quienes te queremos. Te amo.',
+      'Muchas felicidades, mi Dians. Soy el chico más afortunado de poder tenerte un año más conmigo, y espero que así sea por muchos años más. Sabes que soy un chico de sistemas y apuesto a que no esperabas una página. No he hecho esto por nadie, y ahora encontré una nueva forma de demostrarte cuánto te amo. Puedes volver a este recuerdo cada vez que quieras y, con ello, tener guardada aquí mi carta digital.',
+      'Te amo mucho, mi Dians. Cada cumpleaños tuyo recibo un regalo, y ese regalo eres tú.',
     ],
-    signoff: 'Siempre contigo,',
-    signature: 'tu persona favorita',
+    signoff: 'Atentamente,',
+    signature: 'Manriquez.',
   },
 }
 

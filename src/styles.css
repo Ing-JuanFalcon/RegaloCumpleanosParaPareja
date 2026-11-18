@@ -315,10 +315,13 @@ h2 { color: #55405b; }
 }
 .story-back:hover { transform: translateX(-2px); background: rgba(255,255,255,.95); }
 .story-content { width: min(100%, 560px); padding-top: 26px; }
+.memory-scene.story-scene { overflow-y: auto; align-items: flex-start; }
+.story-content { margin: auto; }
 .story-kicker { font-size: 8px; letter-spacing: .17em; }
 .story-heading { margin-top: 10px; }
 .story-heading .heading-ornament { margin-bottom: 4px; font-size: 10px; }
 .story-heading h2 { font-size: clamp(34px, 8.5vw, 48px); }
+.story-tone-0 .story-heading h2 { font-size: clamp(32px, 7.5vw, 46px); }
 .story-heading .heading-underline { margin-top: 10px; }
 .story-message { max-width: 450px; margin-top: 12px; color: #77677e; font-family: 'DM Sans', sans-serif; font-size: 12px; line-height: 1.6; text-wrap: pretty; }
 .story-photo-wrap { margin-top: 15px; }

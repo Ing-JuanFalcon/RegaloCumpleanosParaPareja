@@ -33,9 +33,8 @@ const preloadTransition = (source: string) => {
 const extraMemory = {
   image: characterAssets.extraPhoto,
   alt: 'Una foto de los dos juntos, antes del último recuerdo',
-  chapter: 'CAPÍTULO CINCO · LO QUE SIGUE',
-  title: 'Y todavía quedan momentos por vivir',
-  message: 'Esta historia también guarda un espacio para todo lo que nos espera: más risas, abrazos y recuerdos que iremos creando juntos, poquito a poquito.',
+  title: 'MI mero mole',
+  message: 'Una serie de eventos nos llevaron al día de hoy. Mi niña creció y aún tiene una vida por delante que, estoy seguro, nos llenará de sorpresas. Ya lo tengo todo contigo, pero aún vamos por más.',
   caption: 'nuestra historia continúa',
 }
 
